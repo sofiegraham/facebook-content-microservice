@@ -13,7 +13,7 @@ app.get('/employee_availabilities', (req, res) => {
 });
 
 app.get('/schedule_dates', (req, res) => {
-  res.json(req.scheduleDates);
+  res.json({apple: 1});
 });
 
 app.patch('/employee_availability', (req, res) => {
@@ -23,6 +23,5 @@ app.patch('/employee_availability', (req, res) => {
 app.post('/needed_employees', (req, res) => {
   res.json(req.scheduleTemplate);
 });
-
 
 module.exports = app;

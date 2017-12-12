@@ -4,7 +4,7 @@
   "description": "Facebook content microservice",
   "main": "index.js",
   "scripts": {
-    "test": "npm test",
+    "test": "mocha --reporter nyan test/serverSpec.js; pkill -n node;",
     "start": "nodemon ./server/index.js"
   },
   "repository": {
@@ -31,5 +31,13 @@
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "nodemon": "^1.12.5"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "supertest": "^3.0.0",
+    "eslint": "^4.13.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0"
   }
 }
