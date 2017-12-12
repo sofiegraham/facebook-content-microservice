@@ -1,9 +1,26 @@
 language: node_js
 node_js:
   - 9.0.0
+
 before_script:
   - npm install
+
+sudo: required
+
+services:
+  - docker
+
+before_install:
+- docker build -t sofiegraham/content-microservice .
+- docker run -d -p 127.0.0.1:80:9000 sofiegraham/content-microservice
+
 jobs:
   include:
     - stage: server tests
       script: npm test
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
+    docker push sofiegraham/content-microservice;
+    fi
