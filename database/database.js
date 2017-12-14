@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const knex = require('knex')({
   client: 'pg',
   connection: {
@@ -8,8 +10,13 @@ const knex = require('knex')({
     database: process.env.POSTGRES_DATABASE || 'content',
     charset: 'utf8',
   },
+  // migrations: { // TODO set up migration table
+  //   tableName: 'migrations',
+  // },
 });
 
-const bookshelfDb = require('bookshelf')(knex);
+const bookshelf = require('bookshelf')(knex);
 
-module.exports = bookshelfDb;
+bookshelf.plugin('registry');
+
+module.exports = { bookshelf, knex };
