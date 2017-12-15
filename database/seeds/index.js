@@ -5,29 +5,25 @@ const createFakePosts = require('./seed_data/postsSeed.js');
 const createFakePostLikes = require('./seed_data/postLikesSeed.js');
 const createFakeUserFriends = require('./seed_data/userFriendsSeed.js');
 
-const USER_COUNT = 20000;
-const PAGE_COUNT = 10000;
-const PAGE_LIKE_COUNT = 50000;
-const POST_COUNT = 100000;
-const POST_LIKE_COUNT = 250000;
-const USER_FRIEND_COUNT = 100000;
-// 20 seconds at USER_COUNT 20,000;
-// 5 mins 30 seconds at USER_COUNT 200,000;
-const BATCH_CHUNK_SIZE = 10000;
+const USER_COUNT = 400000; // 200,000
+const PAGE_COUNT = 200000; // 100,000
+const PAGE_LIKE_COUNT = 1000000; // 500,000
+const POST_COUNT = 2000000; // 1 mill
+const POST_LIKE_COUNT = 5000000; // 2.5 mill
+const USER_FRIEND_COUNT = 2000000; // 1 mill
+// 20 seconds at USER_COUNT 20,000
+// 5 mins 30 seconds at USER_COUNT 200,000
+// 14 mins at USER_COUNT 400,000
+const BATCH_CHUNK_SIZE = 1000;
 
 exports.seed = (knex) => {
   let timeNow = Date.now();
-  return knex('users').del()
-    .then(() => {
-      return knex('pages').del();
-    })
-    .then(() => {
-      const data = [];
-      for (let i = 0; i < USER_COUNT; i += 1) {
-        data.push(createFakeUser());
-      }
-      return knex.batchInsert('users', data, BATCH_CHUNK_SIZE);
-    })
+
+  const data = [];
+  for (let i = 0; i < USER_COUNT; i += 1) {
+    data.push(createFakeUser());
+  }
+  return knex.batchInsert('users', data, BATCH_CHUNK_SIZE)
     .then(() => {
       const data = [];
       for (let i = 0; i < PAGE_COUNT; i += 1) {
