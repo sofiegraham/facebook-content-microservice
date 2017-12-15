@@ -3,6 +3,7 @@ const createFakePage = require('./seed_data/pagesSeed.js');
 const createFakePageLikes = require('./seed_data/pageLikesSeed.js');
 const createFakePosts = require('./seed_data/postsSeed.js');
 const createFakePostLikes = require('./seed_data/postLikesSeed.js');
+const createFakeUserFriends = require('./seed_data/userFriendsSeed.js');
 
 const USER_COUNT = 2000;
 const PAGE_COUNT = 1000;
@@ -52,13 +53,12 @@ exports.seed = (knex) => {
         data.push(createFakePostLikes(1, USER_COUNT, 1, POST_COUNT));
       }
       return knex.batchInsert('posts_likes', data, BATCH_CHUNK_SIZE);
+    })
+    .then(() => {
+      const data = [];
+      for (let i = 0; i < USER_FRIEND_COUNT; i += 1) {
+        data.push(createFakeUserFriends(1, USER_COUNT));
+      }
+      return knex.batchInsert('users_friends', data, BATCH_CHUNK_SIZE);
     });
 };
-
-
-// users 2 million YUP
-// pages 1 million YUP
-// pagelikes 5 million (pageIds userIds) YUP
-// posts 10 million YUP
-// postlikes 25 million YUP
-// userfriends 10 million
