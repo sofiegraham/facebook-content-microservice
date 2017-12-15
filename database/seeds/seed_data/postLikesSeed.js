@@ -5,11 +5,11 @@ const randomId = (start, end) => {
   return Math.floor(Math.random() * end) + start;
 };
 
-const createFakePageLike = (firstUserId, lastUserId, firstPageId, lastPageId) => {
+const createFakePostLike = (firstUserId, lastUserId, firstPostId, lastPostId) => {
   return {
     user_id: randomId(firstUserId, lastUserId),
-    page_id: randomId(firstPageId, lastPageId),
+    post_id: randomId(firstPostId, lastPostId),
   };
 };
 
-module.exports = createFakePageLike;
+module.exports = createFakePostLike;

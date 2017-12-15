@@ -1,10 +1,16 @@
 const createFakeUser = require('./seed_data/usersSeed.js');
 const createFakePage = require('./seed_data/pagesSeed.js');
 const createFakePageLikes = require('./seed_data/pageLikesSeed.js');
+const createFakePosts = require('./seed_data/postsSeed.js');
+const createFakePostLikes = require('./seed_data/postLikesSeed.js');
 
 const USER_COUNT = 2000;
 const PAGE_COUNT = 1000;
 const PAGE_LIKE_COUNT = 5000;
+const POST_COUNT = 10000;
+const POST_LIKE_COUNT = 25000;
+const USER_FRIEND_COUNT = 10000;
+
 const BATCH_CHUNK_SIZE = 1000;
 
 exports.seed = (knex) => {
@@ -32,13 +38,27 @@ exports.seed = (knex) => {
         data.push(createFakePageLikes(1, USER_COUNT, 1, PAGE_COUNT));
       }
       return knex.batchInsert('pages_likes', data, BATCH_CHUNK_SIZE);
+    })
+    .then(() => {
+      const data = [];
+      for (let i = 0; i < POST_COUNT; i += 1) {
+        data.push(createFakePosts(1, USER_COUNT, 1, PAGE_COUNT));
+      }
+      return knex.batchInsert('posts', data, BATCH_CHUNK_SIZE);
+    })
+    .then(() => {
+      const data = [];
+      for (let i = 0; i < POST_LIKE_COUNT; i += 1) {
+        data.push(createFakePostLikes(1, USER_COUNT, 1, POST_COUNT));
+      }
+      return knex.batchInsert('posts_likes', data, BATCH_CHUNK_SIZE);
     });
 };
 
 
 // users 2 million YUP
-// pages 1 million
-// pagelikes 5 million (pageIds userIds)
-// posts 20 million
-// postlikes 200 million
-// userfriends 40 million
+// pages 1 million YUP
+// pagelikes 5 million (pageIds userIds) YUP
+// posts 10 million YUP
+// postlikes 25 million YUP
+// userfriends 10 million
