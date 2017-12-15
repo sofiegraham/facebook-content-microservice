@@ -5,16 +5,18 @@ const createFakePosts = require('./seed_data/postsSeed.js');
 const createFakePostLikes = require('./seed_data/postLikesSeed.js');
 const createFakeUserFriends = require('./seed_data/userFriendsSeed.js');
 
-const USER_COUNT = 2000;
-const PAGE_COUNT = 1000;
-const PAGE_LIKE_COUNT = 5000;
-const POST_COUNT = 10000;
-const POST_LIKE_COUNT = 25000;
-const USER_FRIEND_COUNT = 10000;
-
-const BATCH_CHUNK_SIZE = 1000;
+const USER_COUNT = 20000;
+const PAGE_COUNT = 10000;
+const PAGE_LIKE_COUNT = 50000;
+const POST_COUNT = 100000;
+const POST_LIKE_COUNT = 250000;
+const USER_FRIEND_COUNT = 100000;
+// 20 seconds at USER_COUNT 20,000;
+// 5 mins 30 seconds at USER_COUNT 200,000;
+const BATCH_CHUNK_SIZE = 10000;
 
 exports.seed = (knex) => {
+  let timeNow = Date.now();
   return knex('users').del()
     .then(() => {
       return knex('pages').del();
@@ -60,5 +62,8 @@ exports.seed = (knex) => {
         data.push(createFakeUserFriends(1, USER_COUNT));
       }
       return knex.batchInsert('users_friends', data, BATCH_CHUNK_SIZE);
+    })
+    .then(() => {
+      console.log('total seconds:', (Date.now() - timeNow) / 1000);
     });
 };

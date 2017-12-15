@@ -5,4 +5,6 @@ module.exports = (table) => {
   table.text('content').defaultTo('');
   table.integer('likes').defaultTo(0);
   table.timestamps(true, true);
+  table.index('user_id');
+  table.index('page_id');
 };
