@@ -11,18 +11,18 @@ exports.up = knex => (
   knex.schema
     .createTable('users', userSchema)
     .createTable('pages', pageSchema)
-    .createTable('pageLikes', pageLikeSchema)
+    .createTable('pages_likes', pageLikeSchema)
     .createTable('posts', postSchema)
-    .createTable('postLikes', postLikeSchema)
-    .createTable('userFriends', userFriendSchema)
+    .createTable('posts_likes', postLikeSchema)
+    .createTable('users_friends', userFriendSchema)
 );
 
 exports.down = knex => (
   knex.schema
-    .dropTable('userFriends')
-    .dropTable('postLikes')
+    .dropTable('users_friends')
+    .dropTable('posts_likes')
     .dropTable('posts')
-    .dropTable('pageLikes')
+    .dropTable('pages_likes')
     .dropTable('pages')
     .dropTable('users')
 );

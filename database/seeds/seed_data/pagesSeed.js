@@ -1,10 +1,11 @@
-module.exports = [
-  {
-    name: 'Cattle Fans',
-    description: 'A page about cattle',
-  },
-  {
-    name: 'Headlamp Fans',
-    description: 'A page about headlamps',
-  },
-];
+const faker = require('faker');
+faker.seed(1134);
+
+const createFakePage = () => {
+  return {
+    name: faker.commerce.productName(),
+    description: faker.lorem.sentences(),
+  };
+};
+
+module.exports = createFakePage;

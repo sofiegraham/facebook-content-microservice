@@ -5,6 +5,8 @@ const randomDate = (start, end) => {
   return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
 };
 
+randomDate(new Date(1969, 0, 1), new Date(2000, 0, 1))
+
 const createFakeUser = () => {
   return {
     name: faker.name.findName(),
