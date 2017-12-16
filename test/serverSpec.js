@@ -10,7 +10,7 @@ describe('GET /', function() {
 });
 
 describe('GET /schedule_dates', function() {
-  it('respond with json', function(done) {
+  xit('respond with json', function(done) {
     request(app)
       .get('/schedule_dates')
       .set('Accept', 'application/json')

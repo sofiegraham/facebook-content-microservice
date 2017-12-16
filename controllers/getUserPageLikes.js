@@ -1,7 +1,11 @@
-const { Post } = require('../database/models/index.js');
+const db = require('../database/database.js');
 
-const addUserPost = (req, res, next) => {
-  return new Post({
+const PageLike = db.bookshelf.Model.extend({
+  tableName: 'page_likes',
+});
+
+const getUserPageLikes = (req, res, next) => {
+  return new PageLike({
     user_id: req.params.id,
     page_id: req.body.page_id,
     content: req.body.content,
@@ -16,4 +20,4 @@ const addUserPost = (req, res, next) => {
     });
 };
 
-module.exports = addUserPost;
+module.exports = getUserPageLikes;

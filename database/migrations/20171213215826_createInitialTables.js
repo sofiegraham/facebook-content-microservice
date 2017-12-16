@@ -5,7 +5,7 @@ const {
   postSchema,
   postLikeSchema,
   userFriendSchema,
-} = require('../models/index.js');
+} = require('../schemas/index.js');
 
 exports.up = knex => (
   knex.schema
