@@ -13,8 +13,8 @@ app.post('/users/:id/posts', ctrl.addUserPost, (req, res) => {
   res.status(200).end();
 });
 
-app.get('/users/:id/page_likes', ctrl.addUserPost, (req, res) => {
-  res.json(req.pagelikes);
+app.get('/users/:id/page_likes', ctrl.getUserPageLikes, (req, res) => {
+  res.json(req.pageLikes);
 });
 
 module.exports = app;

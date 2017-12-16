@@ -1,8 +1,8 @@
 const db = require('../database.js');
 require('./index.js');
 
-const User = db.bookshelf.Model.extend({
-  tableName: 'users',
+const Page = db.bookshelf.Model.extend({
+  tableName: 'posts',
   posts() {
     return this.hasMany('Post');
   },
@@ -11,4 +11,4 @@ const User = db.bookshelf.Model.extend({
   },
 });
 
-module.exports = db.bookshelf.model('User', User);
+module.exports = db.bookshelf.model('Page', Page);

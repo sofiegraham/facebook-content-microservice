@@ -1,21 +1,14 @@
-const db = require('../database/database.js');
-
-const PageLike = db.bookshelf.Model.extend({
-  tableName: 'page_likes',
-});
+const { PageLike } = require('../database/models/index.js');
 
 const getUserPageLikes = (req, res, next) => {
-  return new PageLike({
-    user_id: req.params.id,
-    page_id: req.body.page_id,
-    content: req.body.content,
-  }).save(null, { method: 'insert' })
-    .then((data) => {
-      console.log('SUCCESS addingUserPost', data);
+  return PageLike.where({
+    user_id: Number(req.params.id),
+  }).fetchAll()
+    .then((results) => {
+      req.pageLikes = results.models;
       next();
-    })
-    .catch((err) => {
-      console.log('ERROR addingUserPost', err);
+    }).catch((err) => {
+      console.log('ERROR gettingUserPageLikes', err);
       res.status(500).end();
     });
 };

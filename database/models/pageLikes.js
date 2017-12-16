@@ -1,8 +1,8 @@
 const db = require('../database.js');
 require('./index.js');
 
-const Post = db.bookshelf.Model.extend({
-  tableName: 'posts',
+const PageLike = db.bookshelf.Model.extend({
+  tableName: 'pages_likes',
   user() {
     return this.belongsTo('User', 'user_id');
   },
@@ -11,4 +11,4 @@ const Post = db.bookshelf.Model.extend({
   },
 });
 
-module.exports = db.bookshelf.model('Post', Post);
+module.exports = db.bookshelf.model('PageLike', PageLike);
