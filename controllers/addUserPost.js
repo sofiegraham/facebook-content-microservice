@@ -7,11 +7,9 @@ const addUserPost = (req, res, next) => {
     content: req.body.content,
   }).save(null, { method: 'insert' })
     .then((data) => {
-      console.log('SUCCESS addingUserPost', data);
       next();
     })
     .catch((err) => {
-      console.log('ERROR addingUserPost', err);
       res.status(500).end();
     });
 };

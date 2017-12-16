@@ -8,7 +8,6 @@ const getUserPageLikes = (req, res, next) => {
       req.pageLikes = results.models;
       next();
     }).catch((err) => {
-      console.log('ERROR gettingUserPageLikes', err);
       res.status(500).end();
     });
 };

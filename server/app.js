@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const ctrl = require('../controllers/index.js');
+// Add this to the VERY top of the first file loaded in your app
+
 
 const app = express();
 
@@ -18,3 +20,4 @@ app.get('/users/:id/page_likes', ctrl.getUserPageLikes, (req, res) => {
 });
 
 module.exports = app;
+
