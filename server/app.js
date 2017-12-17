@@ -1,15 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const ctrl = require('../controllers/index.js');
-// Add this to the VERY top of the first file loaded in your app
-
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(__dirname + '/../client'));
+app.use(express.static(`${__dirname}/../client`));
 
 app.post('/users/:id/posts', ctrl.addUserPost, (req, res) => {
   res.status(200).end();
@@ -19,5 +17,8 @@ app.get('/users/:id/page_likes', ctrl.getUserPageLikes, (req, res) => {
   res.json(req.pageLikes);
 });
 
-module.exports = app;
+app.get('/users/:id/feed', ctrl.getUserFeed, (req, res) => {
+  res.json(req.pageLikes);
+});
 
+module.exports = app;

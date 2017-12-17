@@ -5,59 +5,47 @@ const createFakePosts = require('./seed_data/postsSeed.js');
 const createFakePostLikes = require('./seed_data/postLikesSeed.js');
 const createFakeUserFriends = require('./seed_data/userFriendsSeed.js');
 
-const USER_COUNT = 400000; // 200,000
-const PAGE_COUNT = 200000; // 100,000
-const PAGE_LIKE_COUNT = 1000000; // 500,000
-const POST_COUNT = 2000000; // 1 mill
-const POST_LIKE_COUNT = 5000000; // 2.5 mill
-const USER_FRIEND_COUNT = 2000000; // 1 mill
-// 20 seconds at USER_COUNT 20,000
-// 5 mins 30 seconds at USER_COUNT 200,000
-// 14 mins at USER_COUNT 400,000
-const BATCH_CHUNK_SIZE = 1000;
+const USER_COUNT = 400000;
+const PAGE_COUNT = 200000;
+const PAGE_LIKE_COUNT = 1000000;
+const POST_COUNT = 2000000;
+const POST_LIKE_COUNT = 5000000;
+const USER_FRIEND_COUNT = 2000000;
+
+const BATCH_CHUNK_SIZE = 10000;
+
+const generateDataArray = (numberOfRows, fakeDataFunction, ...fakeDataArgs) => {
+  const data = [];
+  for (let i = 0; i < numberOfRows; i += 1) {
+    data.push(fakeDataFunction(...fakeDataArgs));
+  }
+  return data;
+};
 
 exports.seed = (knex) => {
-  let timeNow = Date.now();
+  const timeNow = Date.now();
 
-  const data = [];
-  for (let i = 0; i < USER_COUNT; i += 1) {
-    data.push(createFakeUser());
-  }
-  return knex.batchInsert('users', data, BATCH_CHUNK_SIZE)
+  const userData = generateDataArray(USER_COUNT, createFakeUser);
+  return knex.batchInsert('users', userData, BATCH_CHUNK_SIZE)
     .then(() => {
-      const data = [];
-      for (let i = 0; i < PAGE_COUNT; i += 1) {
-        data.push(createFakePage());
-      }
-      return knex.batchInsert('pages', data, BATCH_CHUNK_SIZE);
+      const pageData = generateDataArray(PAGE_COUNT, createFakePage);
+      return knex.batchInsert('pages', pageData, BATCH_CHUNK_SIZE);
     })
     .then(() => {
-      const data = [];
-      for (let i = 0; i < PAGE_LIKE_COUNT; i += 1) {
-        data.push(createFakePageLikes(1, USER_COUNT, 1, PAGE_COUNT));
-      }
-      return knex.batchInsert('pages_likes', data, BATCH_CHUNK_SIZE);
+      const pageLikesData = generateDataArray(PAGE_LIKE_COUNT, createFakePageLikes, 1, USER_COUNT, 1, PAGE_COUNT);
+      return knex.batchInsert('pages_likes', pageLikesData, BATCH_CHUNK_SIZE);
     })
     .then(() => {
-      const data = [];
-      for (let i = 0; i < POST_COUNT; i += 1) {
-        data.push(createFakePosts(1, USER_COUNT, 1, PAGE_COUNT));
-      }
-      return knex.batchInsert('posts', data, BATCH_CHUNK_SIZE);
+      const postData = generateDataArray(POST_COUNT, createFakePosts, 1, USER_COUNT, 1, PAGE_COUNT);
+      return knex.batchInsert('posts', postData, BATCH_CHUNK_SIZE);
     })
     .then(() => {
-      const data = [];
-      for (let i = 0; i < POST_LIKE_COUNT; i += 1) {
-        data.push(createFakePostLikes(1, USER_COUNT, 1, POST_COUNT));
-      }
-      return knex.batchInsert('posts_likes', data, BATCH_CHUNK_SIZE);
+      const postLikesData = generateDataArray(POST_LIKE_COUNT, createFakePostLikes, 1, USER_COUNT, 1, POST_COUNT);
+      return knex.batchInsert('posts_likes', postLikesData, BATCH_CHUNK_SIZE);
     })
     .then(() => {
-      const data = [];
-      for (let i = 0; i < USER_FRIEND_COUNT; i += 1) {
-        data.push(createFakeUserFriends(1, USER_COUNT));
-      }
-      return knex.batchInsert('users_friends', data, BATCH_CHUNK_SIZE);
+      const userFriendsData = generateDataArray(USER_FRIEND_COUNT, createFakeUserFriends, 1, USER_COUNT);
+      return knex.batchInsert('users_friends', userFriendsData, BATCH_CHUNK_SIZE);
     })
     .then(() => {
       console.log('total seconds:', (Date.now() - timeNow) / 1000);

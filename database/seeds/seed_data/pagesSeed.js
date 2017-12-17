@@ -1,5 +1,4 @@
-const faker = require('faker');
-faker.seed(1134);
+const { faker } = require('./seedHelpers.js');
 
 const createFakePage = () => {
   return {

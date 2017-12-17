@@ -1,9 +1,4 @@
-const faker = require('faker');
-faker.seed(1134);
-
-const randomDate = (start, end) => {
-  return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
-};
+const { randomDate, faker } = require('./seedHelpers.js');
 
 const createFakeUser = () => {
   return {

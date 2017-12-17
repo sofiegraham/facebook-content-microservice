@@ -6,11 +6,11 @@ const addUserPost = (req, res, next) => {
     page_id: req.body.page_id,
     content: req.body.content,
   }).save(null, { method: 'insert' })
-    .then((data) => {
+    .then(() => {
       next();
     })
     .catch((err) => {
-      res.status(500).end();
+      res.status(500).end(err);
     });
 };
 

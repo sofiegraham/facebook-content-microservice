@@ -10,9 +10,6 @@ const knex = require('knex')({
     database: process.env.POSTGRES_DATABASE || 'content',
     charset: 'utf8',
   },
-  // migrations: { // TODO set up migration table
-  //   tableName: 'migrations',
-  // },
 });
 
 const bookshelf = require('bookshelf')(knex);

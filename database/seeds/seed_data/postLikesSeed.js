@@ -1,9 +1,4 @@
-const faker = require('faker');
-faker.seed(1134);
-
-const randomId = (start, end) => {
-  return Math.floor(Math.random() * end) + start;
-};
+const { randomId } = require('./seedHelpers.js');
 
 const createFakePostLike = (firstUserId, lastUserId, firstPostId, lastPostId) => {
   return {
