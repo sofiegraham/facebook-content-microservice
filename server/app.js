@@ -18,7 +18,7 @@ app.get('/users/:id/page_likes', ctrl.getUserPageLikes, (req, res) => {
 });
 
 app.get('/users/:id/feed', ctrl.getUserFeed, (req, res) => {
-  res.json(req.pageLikes);
+  res.json(req.feed);
 });
 
 module.exports = app;
