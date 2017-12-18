@@ -9,6 +9,9 @@ const Page = db.bookshelf.Model.extend({
   pageLikes() {
     return this.hasMany('PageLike');
   },
+  userFollows() {
+    return this.morphMany('UserFollow', 'follow');
+  },
 });
 
 module.exports = db.bookshelf.model('Page', Page);

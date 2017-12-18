@@ -21,4 +21,8 @@ app.get('/users/:id/feed', ctrl.getUserFeed, (req, res) => {
   res.json(req.feed);
 });
 
+app.get('/test', (req, res) => {
+  res.json('test');
+});
+
 module.exports = app;
