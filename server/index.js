@@ -1,8 +1,19 @@
 require('dotenv').config();
 require('newrelic');
+const cluster = require('cluster');
 
-const app = require('./app.js');
 
-const PORT = process.env.SERVER_PORT || 8080;
+if (cluster.isMaster) {
+  const cpuCount = require('os').cpus().length;
 
-app.listen(PORT, console.log(`now listening on port ${PORT}`));
+  for (var i = 0; i < 10; i += 1) {
+    cluster.fork();
+  }
+
+} else {
+  const app = require('./app.js');
+
+  const PORT = process.env.SERVER_PORT || 8080;
+
+  app.listen(PORT, console.log(`now listening on port ${PORT}`)); 
+}
