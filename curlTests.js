@@ -21,7 +21,7 @@ const url = 'http://localhost:9000';
 // });
 
 
-axios.get(`${url}/users/1/feed`)
+axios.get(`${url}/users/3/feed`)
 .then(function (response) {
   console.log(response.data);
 })
