@@ -1,7 +1,5 @@
 const faker = require('faker');
 
-faker.seed(process.env.SERVER_PORT || 1234);
-
 const randomId = (start, end) => {
   return Math.floor(Math.random() * end) + start;
 };
