@@ -2,13 +2,20 @@ language: node_js
 node_js:
   - 9.0.0
 
-before_script:
-  - npm install
-
 sudo: required
 
 services:
   - docker
+addons:
+  postgresql: 9.6
+  apt:
+    packages:
+    - postgresql-9.6-postgis-2.3
+    
+before_script:
+- npm install
+- psql -c 'create database content;' -U postgres
+- npm run build:db
 
 before_install:
 - docker build -t sofiegraham/content-microservice .

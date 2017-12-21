@@ -46,7 +46,7 @@ exports.up = (knex) => { // runtime just over 1 minute;
 };
 
 exports.down = (knex) => {
-  knex('users_follows').del().where({
+  return knex('users_follows').del().where({
     follow_type: 'page',
   });
 };

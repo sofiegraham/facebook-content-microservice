@@ -19,5 +19,5 @@ EXPOSE 9000
 # Define environment variable
 ENV NAME World
 
-# Run app.py when the container launches
+# Run npm start when the container launches
 CMD ["npm", "start"]

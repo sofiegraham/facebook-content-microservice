@@ -43,3 +43,33 @@ module.exports = getUserFeed;
 // SELECT * FROM posts WHERE user_id IN (SELECT follow_id FROM users_follows WHERE user_id = ${req.params.id}) AND page_id IS NULL UNION SELECT * FROM posts WHERE page_id IN (SELECT follow_id FROM users_follows WHERE user_id = ${req.params.id})
 
 // WHERE (user_id, page_id) IN ( (SELECT follow_id FROM users_follows WHERE user_id = ${req.params.id}), (NULL) );
+
+
+
+const numberOfIslands = (arrayOfLand) => {
+  //catcch empty array
+  const visited = {};
+  let countOfIslands = 1;
+
+  for(let y = 0; y < arrayOfLand.length; y++) {
+    for(let x = 0; x < arrayOfLand[0].length; x++) {
+      if(arrayOfLand[y[x]] === 1) {
+        if(!visited[`${y},${x}`]) {
+          countOfIslands ++;
+          floodFill(y, x);
+        }
+      }
+  }
+  return countOfIslands;
+}
+
+const floodFill = (y, x) => {
+  visited[`${y},${x}`] = true;
+  if(arrayOfLand[y[x + 1]] === 1) {
+    floodFill(y, x + 1);
+  }
+  if(arrayOfLand[y + 1[x]] === 1) {
+    floodFill(y + 1, x);
+  }
+  return;
+}
