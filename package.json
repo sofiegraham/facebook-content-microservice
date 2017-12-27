@@ -4,7 +4,7 @@
   "description": "Facebook content microservice",
   "main": "index.js",
   "scripts": {
-    "build:testdb": "node ./test/testDB.js",
+    "build:testdb": "knex migrate:latest",
     "test": "mocha --reporter nyan test/serverSpec.js --exit",
     "start": "nodemon ./server/index.js"
   },
