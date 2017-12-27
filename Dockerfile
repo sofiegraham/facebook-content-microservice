@@ -1,5 +1,5 @@
 # Use an official Node runtime as a parent image
-FROM node:carbon
+FROM node:9.0.0
 
 # Set the working directory to /app
 WORKDIR /app
