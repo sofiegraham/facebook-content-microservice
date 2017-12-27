@@ -12,7 +12,7 @@ const POST_COUNT = process.env.SEED_POST_COUNT;
 const POST_LIKE_COUNT = process.env.SEED_POST_LIKE_COUNT;
 const USER_FRIEND_COUNT = process.env.SEED_USER_FRIEND_COUNT;
 
-const BATCH_CHUNK_SIZE = process.env.SEED_BATCH_CHUNK_SIZE;
+const BATCH_CHUNK_SIZE = 10000;
 
 const generateDataArray = (numberOfRows, fakeDataFunction, ...fakeDataArgs) => {
   const data = [];
