@@ -21,13 +21,4 @@ app.get('/users/:id/feed', ctrl.getUserFeed, (req, res) => {
   res.json(req.feed);
 });
 
-app.get('/test', (req, res) => {
-  const arrayInc = [1];
-  for(let i = 0; i < 10000000; i++) {
-    arrayInc.pop();
-    arrayInc.push(i);
-  }
-  res.json('test');
-});
-
 module.exports = app;

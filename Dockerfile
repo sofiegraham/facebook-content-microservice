@@ -17,7 +17,7 @@ ADD . /app
 EXPOSE 9000
 
 # Define environment variable
-ENV NAME World
+#ENV NAME World
 
 # Run npm start when the container launches
 CMD ["npm", "start"]

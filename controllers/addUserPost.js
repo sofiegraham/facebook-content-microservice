@@ -10,7 +10,7 @@ const addUserPost = (req, res, next) => {
       next();
     })
     .catch((err) => {
-      res.status(500).end(err);
+      res.status(500).json(err);
     });
 };
 

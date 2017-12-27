@@ -26,7 +26,7 @@ const getUserFeed = (req, res, next) => {
       req.feed = data.rows;
       next();
     }).catch((err) => {
-      res.status(500).end(err);
+      res.status(500).json(err);
     });
 };
 
