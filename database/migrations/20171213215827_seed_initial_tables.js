@@ -5,12 +5,12 @@ const createFakePosts = require('../seeds/seed_data/postsSeed.js');
 const createFakePostLikes = require('../seeds/seed_data/postLikesSeed.js');
 const createFakeUserFriends = require('../seeds/seed_data/userFriendsSeed.js');
 
-const USER_COUNT = 40000;
-const PAGE_COUNT = 20000;
-const PAGE_LIKE_COUNT = 100000;
-const POST_COUNT = 200000;
-const POST_LIKE_COUNT = 50000;
-const USER_FRIEND_COUNT = 20000;
+const USER_COUNT = process.env.SEED_USER_COUNT;
+const PAGE_COUNT = process.env.SEED_PAGE_COUNT;
+const PAGE_LIKE_COUNT = process.env.SEED_PAGE_LIKE_COUNT;
+const POST_COUNT = process.env.SEED_POST_COUNT;
+const POST_LIKE_COUNT = process.env.SEED_POST_LIKE_COUNT;
+const USER_FRIEND_COUNT = process.env.SEED_USER_FRIEND_COUNT;
 
 const BATCH_CHUNK_SIZE = 1000;
 

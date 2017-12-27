@@ -15,7 +15,7 @@ addons:
 before_script:
 - npm install
 - psql -c 'create database content;' -U postgres
-- npm run build:db
+- npm run build:testdb
 
 before_install:
 - docker build -t sofiegraham/content-microservice .
