@@ -2,7 +2,7 @@ const { User } = require('../database/models/index.js');
 
 const getUserDemographic = (req, res, next) => {
   return User.where({
-    user_id: req.params.id,
+    id: req.params.id,
   }).fetch({ columns: ['id', 'name', 'birthday', 'gender', 'relationshipStatus', 'location'] })
     .then((result) => {
       req.userDemographic = result;

@@ -45,3 +45,6 @@ module.exports = getUserFeed;
 // WHERE (user_id, page_id) IN ( (SELECT follow_id FROM users_follows WHERE user_id = ${req.params.id}), (NULL) );
 
 
+// SELECT * FROM posts WHERE user_id IN (SELECT follow_id FROM users_follows WHERE user_id = 3) AND page_id IS NULL UNION SELECT * FROM posts WHERE page_id IN (SELECT follow_id FROM users_follows WHERE user_id = 3)
+
+// SELECT COUNT (*) FROM posts WHERE user_id IN (SELECT follow_id FROM users_follows WHERE user_id = 3) AND page_id IS NULL UNION SELECT COUNT (*) FROM posts WHERE page_id IN (SELECT follow_id FROM users_follows WHERE user_id = 3)

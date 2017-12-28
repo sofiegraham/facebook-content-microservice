@@ -3,6 +3,7 @@ const addPostLike = require('./addPostLike.js');
 const addUserPost = require('./addUserPost.js');
 const getUserFeed = require('./getUserFeed.js');
 const getUserPageLikes = require('./getUserPageLikes.js');
+const getUserDemographic = require('./getUserDemographic.js');
 
 module.exports = {
   addUserPost,
@@ -10,4 +11,5 @@ module.exports = {
   getUserPageLikes,
   getUserFeed,
   addPageLike,
+  getUserDemographic,
 };
