@@ -1,7 +1,6 @@
 const { PageLike } = require('../database/models/index.js');
 
 const getUserPageLikes = (req, res, next) => {
-  // TODO check for no id or :id   id must be int
   return PageLike.where({
     user_id: req.params.id,
   }).fetchAll({ columns: ['page_id'] })
