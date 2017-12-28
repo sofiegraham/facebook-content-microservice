@@ -21,7 +21,7 @@ const db = require('../database/database.js');
 // };
 
 const getUserFeed = (req, res, next) => {
-  return db.knex.schema.raw(`SELECT * FROM posts WHERE user_id IN (SELECT follow_id FROM users_follows WHERE user_id = ${req.params.id}) AND page_id IS NULL UNION SELECT * FROM posts WHERE page_id IN (SELECT follow_id FROM users_follows WHERE user_id = ${req.params.id})`)
+  return db.knex.schema.raw(`SELECT * FROM posts WHERE user_id IN (SELECT follow_id FROM users_follows WHERE user_id = ${req.params.id}) AND page_id IS NULL UNION SELECT * FROM posts WHERE page_id IN (SELECT follow_id FROM users_follows WHERE user_id = ${req.params.id}) ORDER BY created_at DESC LIMIT 10`)
     .then((data) => {
       req.feed = data.rows;
       next();
