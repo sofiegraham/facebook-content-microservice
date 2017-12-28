@@ -1,6 +1,6 @@
 const request = require('supertest');
 //const assert = require('assert');
-const app = require('../server/app.js');
+const app = require('../server/routes.js');
 const { expect } = require('chai');
 
 
