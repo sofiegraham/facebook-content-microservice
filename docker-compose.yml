@@ -31,6 +31,9 @@ services:
     environment:
       POSTGRES_DB: content
       POSTGRES_PASSWORD: password123
+    deploy:
+      placement:
+        constraints: [node.role == manager]
     networks:
       - webnet
   visualizer:
