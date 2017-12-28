@@ -36,6 +36,7 @@ Metrics
 Use NewRelic
 
 
-To load test
+#To load test
 
 Adjust artilleryLoadtest.yml
+To run a load test: $artillery run <file_name.yml>

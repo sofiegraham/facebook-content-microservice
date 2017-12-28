@@ -29,7 +29,7 @@ app.get('/users/:id/page_likes', ctrl.getUserPageLikes, (req, res) => {
   res.json(req.pageLikes);
 });
 
-app.get('/users/:id/demographic', ctrl.getUserPageLikes, (req, res) => {
+app.get('/users/:id/demographic', ctrl.getUserDemographic, (req, res) => {
   res.json(req.userDemographic);
 });
 
