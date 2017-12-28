@@ -1,7 +1,7 @@
 const faker = require('faker');
 
 const randomId = (start, end) => {
-  return Math.floor(Math.random() * end) + start;
+  return Math.floor(Math.random() * (end - start)) + start;
 };
 
 const randomDate = (start, end) => {
