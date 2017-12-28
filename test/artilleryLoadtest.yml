@@ -2,11 +2,13 @@ config:
   target: 'http://localhost:9000'
   phases:
     - duration: 1 # ramp up time
-      arrivalRate: 10000 # amount of users to ramp up per second
+      arrivalRate: 1000 # amount of users to ramp up per second
   defaults:
     headers:
       x-my-service-auth: '987401838271002188298567'
 scenarios:
   - flow:
+    # - get:
+    #     url: "/users/3/feed"
     - get:
-        url: "/users/3/feed"
+        url: "/users/5000/page_likes"

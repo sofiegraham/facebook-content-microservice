@@ -1,8 +1,7 @@
 const request = require('supertest');
-const assert = require('assert');
+//const assert = require('assert');
 const app = require('../server/app.js');
-const db = require('../database/database.js');
-const expect = require('chai').expect;
+const { expect } = require('chai');
 
 
 describe('GET /', () => {
@@ -13,8 +12,8 @@ describe('GET /', () => {
   });
 });
 
-describe ('GET /stuff', () => {
-  it('respond with json', () => {
+describe('GET /users/:id/page_likes', () => {
+  it('responds with an including page_ids', () => {
     return request(app)
       .get('/users/1/page_likes')
       .set('Accept', 'application/json')
