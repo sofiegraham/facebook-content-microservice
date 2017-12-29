@@ -36,6 +36,8 @@ services:
         constraints: [node.role == manager]
     networks:
       - webnet
+  redis:
+    image: "redis:alpine"
   visualizer:
     image: dockersamples/visualizer:stable
     ports:
