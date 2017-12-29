@@ -21,7 +21,7 @@ app.post('/pages/:id/likes', ctrl.addPageLike, (req, res) => {
   res.status(200).end();
 });
 
-app.get('/users/:id/feed', ctrl.getUserFeed, (req, res) => {
+app.get('/users/:id/feed', ctrl.routeFeedRequestToCacheOrDB, (req, res) => {
   res.json(req.feed);
 });
 
