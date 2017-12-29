@@ -6,6 +6,7 @@ sudo: required
 
 services:
   - docker
+  - redis-server
 addons:
   postgresql: 9.6
   apt:
