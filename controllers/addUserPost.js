@@ -1,4 +1,5 @@
 const { Post } = require('../database/models/index.js');
+const queue = require('../workers/index.js');
 
 const addUserPost = (req, res, next) => {
   return new Post({
@@ -6,7 +7,12 @@ const addUserPost = (req, res, next) => {
     page_id: req.body.page_id,
     content: req.body.content,
   }).save(null, { method: 'insert' })
-    .then(() => {
+    .then((post) => {
+      queue.create('cacheFeedUpdate', {
+        title: `Feed update for ${req.params.id} followers`,
+        followId: req.params.id,
+        postId: post.attributes.id,
+      }).save();
       next();
     })
     .catch((err) => {
