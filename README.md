@@ -35,6 +35,28 @@ Metrics
 
 Use NewRelic
 
+#Redis
+
+Install redis
+Start redis server: $redis-server
+
+
+#Redis Kue
+Used for fanout service
+
+
+
+#AWS SQS
+The post writing service relies on an AWS queue (SQS).
+Set up a queue in AWS: https://aws.amazon.com/sqs/
+Add the url of the queue to your env variables as
+AWS_SQS_URL=<yoururl>
+Make sure your service has access to AWS access key and secret. You can set up a user with write access to your queue and add the env variables:
+AWS_ACCESS_KEY=<youraccesskey>
+AWS_SECRET_KEY=<yoursecrectkey>
+
+
+
 
 #To load test
 

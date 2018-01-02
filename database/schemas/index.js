@@ -4,8 +4,8 @@ const pageLikeSchema = require('./pageLikes.js');
 const postSchema = require('./posts.js');
 const postLikeSchema = require('./postLikes.js');
 const userFriendSchema = require('./userFriends.js');
-const userFollowSchema = require('./userFollows');
-
+const userFollowSchema = require('./userFollows.js');
+const userFeedSchema = require('./userFeed.js');
 
 module.exports = {
   userSchema,
@@ -15,4 +15,5 @@ module.exports = {
   postLikeSchema,
   userFriendSchema,
   userFollowSchema,
+  userFeedSchema,
 };

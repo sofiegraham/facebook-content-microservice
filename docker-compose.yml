@@ -24,6 +24,7 @@ services:
       POSTGRES_PORT: 5432
     depends_on:
      - postgres
+     - redis
   postgres:
     image: postgres
     ports:
@@ -38,6 +39,8 @@ services:
       - webnet
   redis:
     image: "redis:alpine"
+  networks:
+      - webnet
   visualizer:
     image: dockersamples/visualizer:stable
     ports:
