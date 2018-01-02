@@ -6,6 +6,7 @@ const getUserPageLikes = require('./getUserPageLikes.js');
 const getUserDemographic = require('./getUserDemographic.js');
 //const getCachedUserFeed = require('./getCachedUserFeed.js');
 const routeFeedRequestToCacheOrDB = require('./routeFeedRequestToCacheOrDB.js');
+const listColumnSchemas = require('./listColumnSchemas.js');
 
 module.exports = {
   addUserPost,
@@ -16,4 +17,5 @@ module.exports = {
   getUserDemographic,
   //getCachedUserFeed,
   routeFeedRequestToCacheOrDB,
+  listColumnSchemas,
 };

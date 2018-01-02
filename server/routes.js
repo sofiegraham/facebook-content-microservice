@@ -33,4 +33,8 @@ app.get('/users/:id/demographic', ctrl.getUserDemographic, (req, res) => {
   res.json(req.userDemographic);
 });
 
+app.get('/listtables', ctrl.listColumnSchemas, (req, res) => {
+  res.json('Failed to find tables');
+});
+
 module.exports = app;
