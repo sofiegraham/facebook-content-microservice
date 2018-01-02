@@ -1,8 +1,8 @@
 const axios = require('axios');
 const url = 'http://localhost:9000';
 
-axios.post(`${url}/users/5/posts`, {
-  content: 'My own stuff hahaha!',
+axios.post(`${url}/users/33/posts`, {
+  content: 'PUPPIES ARE GREAT',
 })
 .then(function (response) {
   console.log(response);

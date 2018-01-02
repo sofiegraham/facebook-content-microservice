@@ -2,17 +2,17 @@ config:
   target: 'http://localhost:9000'
   phases:
     - duration: 1 # ramp up time
-      arrivalRate: 10 # amount of users to ramp up per second
+      arrivalRate: 1000 # amount of users to ramp up per second
   defaults:
     headers:
       x-my-service-auth: '987401838271002188298567'
 scenarios:
   - flow:
     - get:
-        url: "/users/3/feed"
+        url: "/users/666/feed"
     # - get:
     #     url: "/users/5000/page_likes"
     # - post:
-    #       url: "/users/5/posts"
+    #       url: "/users/44/posts"
     #       json:
-    #         content: "This is a string which must be written to the database!"
+    #         content: "This is a string which must be written to the db!"
