@@ -1,4 +1,4 @@
-const usersData = require('../seeds/seed_data/pregenerated_data/usersData.js');
+const usersData = require('../../seeds/seed_data/pregenerated_data/usersData.js');
 
 exports.up = (knex) => {
   const timeNow = Date.now();

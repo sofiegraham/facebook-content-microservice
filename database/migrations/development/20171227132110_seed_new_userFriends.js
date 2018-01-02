@@ -1,4 +1,4 @@
-const userFriendsData = require('../seeds/seed_data/pregenerated_data/userFriendsData.js');
+const userFriendsData = require('../../seeds/seed_data/pregenerated_data/userFriendsData.js');
 
 exports.up = (knex) => {
   return knex.batchInsert('users_friends', userFriendsData, 10000);

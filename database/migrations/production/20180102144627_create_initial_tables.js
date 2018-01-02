@@ -5,7 +5,8 @@ const {
   postSchema,
   postLikeSchema,
   userFriendSchema,
-} = require('../schemas/index.js');
+  userFollowSchema,
+} = require('../../schemas/index.js');
 
 exports.up = knex => (
   knex.schema
@@ -15,6 +16,7 @@ exports.up = knex => (
     .createTable('posts', postSchema)
     .createTable('posts_likes', postLikeSchema)
     .createTable('users_friends', userFriendSchema)
+    .createTable('users_follows', userFollowSchema)
 );
 
 exports.down = knex => (
@@ -25,4 +27,5 @@ exports.down = knex => (
     .dropTable('pages_likes')
     .dropTable('pages')
     .dropTable('users')
+    .dropTable('users_follows')
 );

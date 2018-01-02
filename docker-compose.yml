@@ -22,6 +22,15 @@ services:
       POSTGRES_PASSWORD: password123
       POSTGRES_HOST: postgres
       POSTGRES_PORT: 5432
+      SEED_USER_COUNT: 1000
+      SEED_PAGE_COUNT: 5000
+      SEED_PAGE_LIKE_COUNT: 20000
+      SEED_POST_COUNT: 100000
+      SEED_POST_LIKE_COUNT: 50000
+      SEED_USER_FRIEND_COUNT: 50000
+      NEW_RELIC_KEY: 765b55cfedfa781c10af9e52a1531084668c7cf5
+      NODE_ENV: production
+      AWS_SQS_URL: https://sqs.us-east-2.amazonaws.com/123248820815/content-POST-posts
     depends_on:
      - postgres
      - redis
@@ -39,7 +48,7 @@ services:
       - webnet
   redis:
     image: "redis:alpine"
-  networks:
+    networks:
       - webnet
   visualizer:
     image: dockersamples/visualizer:stable

@@ -22,9 +22,9 @@ const { Post } = require('../database/models/index.js');
 
 const addUserPost = (message) => {
   return new Post({
-    user_id: message.userId,
-    page_id: message.pageId,
-    content: message.content,
+    user_id: message.MessageAttributes.userId.StringValue,
+    page_id: message.MessageAttributes.pageId.StringValue === '-1' ? null : message.MessageAttributes.pageId.StringValue,
+    content: message.MessageAttributes.content.StringValue,
   }).save(null, { method: 'insert' })
     .then(() => {
       const deleteParams = {
@@ -66,7 +66,7 @@ const getNewPosts = () => {
   });
 };
 
-setInterval(getNewPosts, 10);
+setInterval(getNewPosts, 1000);
 
 
 

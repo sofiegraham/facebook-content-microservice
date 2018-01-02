@@ -1,4 +1,4 @@
-const postData = require('../seeds/seed_data/pregenerated_data/postsData7.js');
+const postData = require('../../seeds/seed_data/pregenerated_data/postsData7.js');
 
 exports.up = (knex) => {
   return knex.batchInsert('posts', postData, 10000);

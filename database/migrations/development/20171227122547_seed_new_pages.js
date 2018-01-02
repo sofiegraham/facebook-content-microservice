@@ -1,4 +1,4 @@
-const pagesData = require('../seeds/seed_data/pregenerated_data/pagesData.js');
+const pagesData = require('../../seeds/seed_data/pregenerated_data/pagesData.js');
 
 exports.up = (knex) => {
   return knex.batchInsert('pages', pagesData, 10000);

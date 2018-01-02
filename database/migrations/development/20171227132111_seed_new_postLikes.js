@@ -1,4 +1,4 @@
-const postLikesData = require('../seeds/seed_data/pregenerated_data/postLikesData.js');
+const postLikesData = require('../../seeds/seed_data/pregenerated_data/postLikesData.js');
 
 exports.up = (knex) => {
   return knex.batchInsert('posts_likes', postLikesData, 10000)

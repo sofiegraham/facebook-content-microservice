@@ -1,9 +1,9 @@
-const createFakeUser = require('../seeds/seed_data/usersSeed.js');
-const createFakePage = require('../seeds/seed_data/pagesSeed.js');
-const createFakePageLikes = require('../seeds/seed_data/pageLikesSeed.js');
-const createFakePosts = require('../seeds/seed_data/postsSeed.js');
-const createFakePostLikes = require('../seeds/seed_data/postLikesSeed.js');
-const createFakeUserFriends = require('../seeds/seed_data/userFriendsSeed.js');
+const createFakeUser = require('../../seeds/seed_data/usersSeed.js');
+const createFakePage = require('../../seeds/seed_data/pagesSeed.js');
+const createFakePageLikes = require('../../seeds/seed_data/pageLikesSeed.js');
+const createFakePosts = require('../../seeds/seed_data/postsSeed.js');
+const createFakePostLikes = require('../../seeds/seed_data/postLikesSeed.js');
+const createFakeUserFriends = require('../../seeds/seed_data/userFriendsSeed.js');
 
 const USER_COUNT = process.env.SEED_USER_COUNT;//1million
 const PAGE_COUNT = process.env.SEED_PAGE_COUNT;//500,000

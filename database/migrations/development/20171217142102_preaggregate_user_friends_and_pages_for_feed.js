@@ -1,4 +1,4 @@
-const { userFollowSchema } = require('../schemas/index.js');
+const { userFollowSchema } = require('../../schemas/index.js');
 
 exports.up = knex => (
   knex.schema
