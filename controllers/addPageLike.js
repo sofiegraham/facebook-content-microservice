@@ -1,6 +1,6 @@
 const { PageLike } = require('../database/models/index.js');
 
-const addPostLike = (req, res, next) => {
+const addPageLike = (req, res, next) => {
   return new PageLike({
     page_id: req.params.id,
     user_id: req.body.user_id,
@@ -13,4 +13,4 @@ const addPostLike = (req, res, next) => {
     });
 };
 
-module.exports = addPostLike;
+module.exports = addPageLike;
