@@ -3,7 +3,7 @@ services:
   web:
     image: sofiegraham/content-microservice:latest
     deploy:
-      replicas: 3
+      replicas: 1
       # resources:
         # limits:
         #   cpus: "0.1" # limiting each replica to use, at most, 10% of the CPU (across all cores), and 50MB of RAM.
@@ -15,12 +15,12 @@ services:
     networks: # this is the load balanced network called webnet # if you use the overlay network, but you could also remove the service networks configuration to bypass that. Then you would have to publish the port of the service you want to expose.
       - webnet
     environment:
+      REDIS_PORT: 6379
+      REDIS_HOST: redis
       SERVER_PORT: 9000
       POSTGRES_DB: content
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password123
-      REDIS_PORT: 6379
-      REDIS_HOST: redis
       POSTGRES_HOST: postgres
       POSTGRES_PORT: 5432
       SEED_USER_COUNT: 1000
