@@ -1,7 +1,6 @@
 version: "3"
 services:
   web:
-    # replace username/repo:tag with your name and image details
     image: sofiegraham/content-microservice:latest
     deploy:
       replicas: 3
@@ -20,6 +19,8 @@ services:
       POSTGRES_DB: content
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password123
+      REDIS_PORT: 6379
+      REDIS_HOST: redis
       POSTGRES_HOST: postgres
       POSTGRES_PORT: 5432
       SEED_USER_COUNT: 1000
@@ -48,6 +49,8 @@ services:
       - webnet
   redis:
     image: "redis:alpine"
+    ports:
+      - "6379:6379"
     networks:
       - webnet
   visualizer:
