@@ -8,7 +8,7 @@ const addPostLike = (req, res, next) => {
   }).save(null, { method: 'insert' })
     .then(() => {
       return db.knex('posts')
-        .where('post_id', '=', req.params.id)
+        .where('id', '=', req.params.id)
         .increment('likes', 1);
     })
     .then(() => {
