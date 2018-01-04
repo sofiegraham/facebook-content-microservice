@@ -7,10 +7,10 @@ const getUserFeed = (req, res, next) => {
       const postStrings = [...data.rows].map((post) => {
         return post.id;
       });
-      if (postStrings.length > 0) {
+      if (postStrings.length > 0 && redis) {
         redis.lpush([req.params.id, ...postStrings], (error, reply) => {
           if (error) {
-            console.log('REDIS FAILED TO CACHE', error);
+            console.log(`ERROR: Redis failed to cache feed for user ${req.params.id}: ${error}`);
           }
         });
       }
