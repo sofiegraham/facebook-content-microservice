@@ -7,11 +7,13 @@ const getUserFeed = (req, res, next) => {
       const postStrings = [...data.rows].map((post) => {
         return post.id;
       });
-      redis.lpush([req.params.id, ...postStrings], (error, reply) => {
-        if (error) {
-          console.log('REDIS FAILED TO CACHE', error);
-        }
-      });
+      if (postStrings.length > 0) {
+        redis.lpush([req.params.id, ...postStrings], (error, reply) => {
+          if (error) {
+            console.log('REDIS FAILED TO CACHE', error);
+          }
+        });
+      }
       req.feed = data.rows;
       next();
     }).catch((err) => {
