@@ -1,5 +1,5 @@
 const { Post } = require('../database/models/index.js');
-const queue = require('../workers/index.js');
+const queueCacheFanout = require('./queueCacheFanout.js');
 
 const addUserPost = (req, res, next) => {
   return new Post({
@@ -8,15 +8,12 @@ const addUserPost = (req, res, next) => {
     content: req.body.content,
   }).save(null, { method: 'insert' })
     .then((post) => {
-      queue.create('cacheFeedUpdate', {
-        title: `Feed update for ${req.params.id} followers`,
-        followId: req.params.id,
-        postId: post.attributes.id,
-      }).save();
+      req.post = post.attributes;
       next();
+      queueCacheFanout(req, post);
     })
     .catch((err) => {
-      res.status(500).json(err);
+      res.status(500).json(`ERROR: Could not save post to DB: ${err}`);
     });
 };
 
